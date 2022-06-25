@@ -31,7 +31,7 @@
                     <form action="{{ route('admin.category.store') }}" class="W-25" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Придумайте название" name="title">
+                            <input type="text" class="form-control" placeholder="Название категории" name="title">
                         </div>
                         @error('title')
                         <div class="text-danger">Это поле необходимо заполнить</div>

@@ -32,7 +32,7 @@
                         @csrf
                         @method('patch')
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Придумайте название" name="title" value="{{$category->title}}">
+                            <input type="text" class="form-control" placeholder="Название категории" name="title" value="{{$category->title}}">
                         </div>
                         @error('title')
                         <div class="text-danger">Это поле необходимо заполнить</div>

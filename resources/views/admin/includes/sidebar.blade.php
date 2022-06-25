@@ -12,14 +12,14 @@
                         </p>
                     </a>
                 </li>
-                {{--<li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                <li class="nav-item">
+                    <a href="{{ route('admin.tag.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tags"></i>
                         <p>
-                            Категория
+                            Тэги
                         </p>
                     </a>
-                </li>--}}
+                </li>
             </ul>
         </nav>
     </div>
