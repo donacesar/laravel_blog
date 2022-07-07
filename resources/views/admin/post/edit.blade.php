@@ -28,20 +28,21 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <form action="{{route('admin.post.update', $post->id)}}" class="W-25" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.post.update', $post->id)}}" class="W-25" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Название поста" name="title"
                                    value="{{ old('title', $post->title) }}">
                             @error('title')
-                            <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <textarea name="content" id="summernote">{{ old('content', $post->content) }}</textarea>
                             @error('content')
-                            <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group w-75">
@@ -59,7 +60,7 @@
                                 </div>
                             </div>
                             @error('preview_image')
-                            <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group w-75">
@@ -77,7 +78,7 @@
                                 </div>
                             </div>
                             @error('main_image')
-                            <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-grop w-50">
@@ -88,6 +89,9 @@
                                         value="{{ $category->id }}" {{ $category->id == $post->category_id ? ' selected' : '' }}>{{ $category->title }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Тэги</label>
@@ -98,6 +102,9 @@
                                         {{ is_array($post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
                                 @endforeach
                             </select>
+                            @error('tag_ids')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Обновить">
