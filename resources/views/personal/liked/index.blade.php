@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Auth;
+
 ?>
 @extends('personal.layouts.main')
 
@@ -30,7 +30,45 @@ use Illuminate\Support\Facades\Auth;
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Название</th>
+                                        <th colspan="2" class="text-center">Действия</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($posts as $post)
+                                        <tr>
+                                            <td>{{ $post->id }}</td>
+                                            <td>{{ $post->title  }}</td>
+                                            <td class="text-center"><a href="{{ route('admin.post.show', $post->id) }} "
+                                                                       class="text-lightblue"><i class="far fa-eye"></i></a>
+                                            </td>
+                                            <td>
+                                                <form
+                                                    action="{{ route('personal.liked.delete', $post->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <i class="fas fa-trash-alt text-danger"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
 
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>

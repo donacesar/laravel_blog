@@ -28,18 +28,21 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <form action="{{route('admin.category.update', $category->id)}}" class="W-25" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Название категории" name="title" value="{{$category->title}}">
-                        </div>
-                        @error('title')
-                        <div class="text-danger">Это поле необходимо заполнить</div>
+                    <div class="col-6">
+                        <form action="{{route('admin.category.update', $category->id)}}" class="W-25" method="post">
+                            @csrf
+                            @method('patch')
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Название категории" name="title"
+                                       value="{{$category->title}}">
+                            </div>
+                            @error('title')
+                            <div class="text-danger">Это поле необходимо заполнить</div>
 
-                        @enderror
+                            @enderror
                             <input type="submit" class="btn btn-primary" value="Обновить">
-                    </form>
+                        </form>
+                    </div>
                 </div>
                 <!-- /.row -->
 
