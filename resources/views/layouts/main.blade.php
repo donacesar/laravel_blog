@@ -41,7 +41,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('main.index') }}">Контакты</a>
+                        <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                     </li>
                     @auth()
                         <li class="nav-item">
